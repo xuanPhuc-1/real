@@ -31,7 +31,7 @@ def generateSourceIP(start):
 #start, end: given as command line arguments. eg, python traffic.py -s 2 -e 65  
 def generateDestinationIP(end):
     first = 10
-    second = 0
+    second = 10
     third = 0
 
     #eg, ip = "10.0.0.64"

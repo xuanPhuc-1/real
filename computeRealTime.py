@@ -14,7 +14,7 @@ with open('ARP_data/ARP_Request_flowentries.csv', newline='') as f1:
     reader = csv.reader(f1)
     ARP_Request = list(reader)
 
-with open('mismatch.csv', 'r') as csvfile:
+with open('mismatch.txt', 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     reader = list(reader)
     
@@ -35,9 +35,9 @@ aps = ARP / time_interval
 subARP = ARP_Reply - ARP_Request         
 #time stamp with minute:second format
 time_stamp = time.strftime("%M:%S", time.localtime())
-headers = ["APS", "SUBARP","MISS_MAC", "TIME"]
+headers = ["APS", "SUBARP","MISS_MAC", "CLASS"]
 
-features = [aps, subARP, miss_match, time_stamp]
+features = [aps, subARP, miss_match, 0]
 
 # print(dict(zip(headers, features)))
 # print(features)
