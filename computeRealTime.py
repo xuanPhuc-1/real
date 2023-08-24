@@ -2,7 +2,7 @@ import numpy as np
 import csv
 import pandas as pd
 import time
-time_interval = 3
+time_interval = 1
 
 
 with open('ARP_data/ARP_Reply_flowentries.csv', newline='') as f:
@@ -35,7 +35,7 @@ aps = ARP / time_interval
 subARP = ARP_Reply - ARP_Request         
 #time stamp with minute:second format
 time_stamp = time.strftime("%M:%S", time.localtime())
-headers = ["APS", "SUBARP","MISS_MAC", "CLASS"]
+headers = ["APS", "SUBARP","MISS_MAC"]
 
 features = [aps, subARP, miss_match, 0]
 
@@ -46,15 +46,15 @@ features = [aps, subARP, miss_match, 0]
 #     cursor = csv.writer(f, delimiter=",")
 #     cursor.writerow(features)
 
-with open('evaluation.csv', 'a') as f:      #comment de test model
-    cursor = csv.writer(f, delimiter=",")
-    cursor.writerow(features)
+# with open('evaluation.csv', 'a') as f:      #comment de test model
+#     cursor = csv.writer(f, delimiter=",")
+#     cursor.writerow(features)
 
-with open('realtime.csv', 'w') as f:
-    cursor = csv.writer(f, delimiter=",")
-    cursor.writerow(headers)
-    cursor.writerow(features)
-    f.close()
+# with open('realtime.csv', 'w') as f:
+#     cursor = csv.writer(f, delimiter=",")
+#     cursor.writerow(headers)
+#     cursor.writerow(features)
+#     f.close()
     
 # with open('dataset.csv', 'a') as f:            #comment de test model
 #     cursor = csv.writer(f, delimiter=",")
@@ -62,6 +62,6 @@ with open('realtime.csv', 'w') as f:
 #     cursor.writerow(features)
 #     f.close()
 
-# with open('evaluation.csv', 'a') as f:      #comment de test model
-#     cursor = csv.writer(f, delimiter=",")
-#     cursor.writerow(features)
+with open('normal.csv', 'a') as f:      #comment de test model
+    cursor = csv.writer(f, delimiter=",")
+    cursor.writerow(features)

@@ -44,7 +44,7 @@ do
     python3.8 computeRealTime.py
     #truncate -s 0 ARP_Broadcast/arp_broadcast.csv
     #python3.8 inspector.py
-    sleep 3
+    sleep 1
 done
 
 

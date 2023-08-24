@@ -50,7 +50,7 @@ def main():
                             MacToIpDict[flowEntry.dl_src] = flowEntry.arp_spa
                             print(f"Added {flowEntry.dl_src}-> {flowEntry.arp_spa} to MacToIpDict")
                         if flowEntry.arp_op==2 and flowEntry.dl_src in MacToIpDict and MacToIpDict[flowEntry.dl_src] != flowEntry.arp_spa:
-                            print(f"{Fore.RED}WARNING!{Fore.RESET} {bridge}: {flowEntry.dl_src} is trying to impersonate {flowEntry.arp_spa}!")
+                            print(f"{Fore.RED}WARNING!{Fore.RESET} {'tcp:10.20.0.1:6633'}: {flowEntry.dl_src} is trying to impersonate {flowEntry.arp_spa}!")
                             suspiciousPackets += flowEntry.n_packets
             except ValueError as e:
                 print(str(e))
@@ -60,6 +60,7 @@ def main():
             print(f"{Fore.RED}WARNING!{Fore.RESET} {suspiciousPackets} suspicious packets detected!")
         with open('mismatch.txt', 'a') as file:
             file.write(f'{suspiciousPackets}\n')
+            file.close()
         time.sleep(timeInterval)
         
 
